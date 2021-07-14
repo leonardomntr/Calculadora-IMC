@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calcule seu IMC</h1>
+        <form>
+            <p>Digite seu peso</p>
+            <div>
+                <input id="peso" type="number"/>
+                <span>kg</span>
+            </div>
+            <div>
+                <p>Digite sua altura</p>
+                <input id="altura" type="number"/>
+                <span>cm</span>
+            </div>
+            <div>
+                <input id="btnCalcular" class="botao-calcular" type="button" value="Calcular"/>
+            </div>
+        </form>
+        <div class"resultado">
+            <ul>Seu IMC é:</ul>
+            <li id="resultado"></li>
+        </div>
+<script type="text/javascript">
+    
+    let botaoCalcular = document.getElementById('btnCalcular');
+
+    function calculandoIMC(){
+    let peso = document.getElementById("peso").value;
+    let altura = document.getElementById("altura").value/100;
+    let resultado = document.getElementById("resultado");
+    
+    if(altura !== "" && peso !== ""){
+        
+        let imc = (peso / (altura * altura)).toFixed(1);
+        let mensagem = "";
+        
+        if(imc < 18.5){
+        mensagem = "Abaixo do peso!"
+        }else if(imc < 25){
+        mensagem = "Você está com o peso ideal!"
+        }else if( imc < 30){
+        mensagem = "Você está levemente acima do peso!"
+        }else if( imc < 35){
+        mensagem = "Cuidado! Obesidade grau I"
+        }else if( imc < 40){
+        mensagem = "Cuidado! Obesidade grau II"
+        }else {
+        mensagem = "Cuidado! Obesidade grau III"
+        }
+
+        resultado.textContent = `${imc}. ${mensagem}`;
+        
+        
+    }else{
+        resultado.textContent = "Preencha todos os campos!!!"
+    }
+    
+    }
+
+    botaoCalcular.addEventListener('click', calculandoIMC);
+
+</script> 
+</body>
+</html>
+body{
+    text-align: center;
+    display: flex;
+  }
+  
+h1{
+  margin-left: 20px;
+    
+}
+  
+.container{
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 10px;
+  padding: 15px;
+  margin: 15px;
+  height: 400px;
+  text-align: center;
+
+}
+
+.botao-calcular{
+  font-size: 18px;
+  width: 100%;
+  background-color: #1b2845;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 20px;
+}
+  
